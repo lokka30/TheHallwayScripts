@@ -1,20 +1,8 @@
 """
 THProxyDetector 
-
-This Python script kicks players that join with a proxy.
-
-Designed to run on PySpades, PySnip & Piqueserver
-Created for 'The Hallway' by lokka30 ~ https://discord.gg/ButndsdGua
-
-Requirements
-- pip install requests
-  (this is installed on most systems anyways)
-
 Version: Build 5
 License: MIT License
-Repo: https://github.com/lokka30/THProxyDetector
-
-Contributors: sByte
+More information: https://github.com/lokka30/THProxyDetector
 """
 import json
 import requests
