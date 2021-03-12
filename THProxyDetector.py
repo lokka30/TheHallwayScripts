@@ -2,7 +2,8 @@
 THProxyDetector 
 Version: Build 5
 License: MIT License
-More information: https://github.com/lokka30/THProxyDetector
+Author: lokka30
+More information: https://github.com/lokka30/TheHallwayScripts
 """
 import json
 import requests
