@@ -1,17 +1,28 @@
-# THProxyDetector
+# TheHallway's Scripts
+* These are Python scripts created for [piqueserver](https://github.com/lokka30/THProxyDetector/issues), an Ace of Spades 'classic' server implementation.
+* These scripts are created by and run on [The Hallway](https://discord.gg/ButndsdGua), a CTF server with the original 'hallway' map by izzy.
+* Fellow server owners are free to install these scripts and adapt them as they wish, since all are licensed under the [MIT License](https://github.com/lokka30/TheHallwayScripts/blob/main/LICENSE).
+
+## THProxyDetector.py
 "TheHallway's Proxy Detector"
 
-## About
-* This is a Python script for [piqueserver](https://github.com/lokka30/THProxyDetector/issues), an Ace of Spades 'classic' server. This is designed to kick players that join with a proxy.
-* Originally created for [The Hallway](https://discord.gg/ButndsdGua), a CTF server with the original 'hallway' map by izzy.
+### About
+* This is designed to kick players that join with a proxy.
 
-## Requirements:
+### Requirements:
 * [piqueserver](https://github.com/piqueserver/piqueserver)
+* This script should work on most operating systems - ideally use a Linux distro like Ubuntu.
 * **Requests**: `pip install requests` - this is installed on most systems anyways
 
-## Warning:
+### Warning:
 * This script was designed for [piqueserver](https://github.com/piqueserver/piqueserver), it is unlikely to run on PySnip or PySpades. (you should upgrade to piqueserver anyways)
-* This script was designed for Linux systems, and only tested on Ubuntu.
+
+### Download:
+* Click [here](https://github.com/lokka30/TheHallwayScripts/blob/main/THProxyDetector.py) to download the latest development build for THProxyDetector.
+
+### Contributors:
+Thank you very much to the following contributors for improving the script:
+* `sByte`
 
 ## Support:
 - Please create an issue on the [issue tracker](https://github.com/lokka30/THProxyDetector/issues).
