@@ -5,8 +5,6 @@
 
 # Script Descriptions
 
-***
-
 ## THKickBadNames.py
 ### About:
 * This script kicks players that have usernames beginning with the `#` character, since they make it difficult to use the `/votekick` command for regular users.
