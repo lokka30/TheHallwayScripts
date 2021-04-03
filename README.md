@@ -28,7 +28,16 @@
 
 ### Contributors:
 Thank you very much to the following contributors for improving the script:
-* `sByte`
+* `sByte` fixed a bunch of code arising from my poor python skills.
+
+***
+
+## Undocumented Scripts
+
+### THVersionBlocker.py
+* This script requires testing. It is highly likely that it won't work at all. Never ran it.
+
+***
 
 # Support:
 - Please create an issue on the [issue tracker](https://github.com/lokka30/THProxyDetector/issues).
