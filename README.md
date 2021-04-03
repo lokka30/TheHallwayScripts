@@ -20,11 +20,10 @@
 
 ### Requirements:
 * [piqueserver](https://github.com/piqueserver/piqueserver)
-* This script should work on most operating systems - ideally use a Linux distro like Ubuntu.
-* **Requests**: `pip install requests` - this is installed on most systems anyways
+* Requests lib: `pip install requests`
 
 ### Warning:
-* This script was designed for [piqueserver](https://github.com/piqueserver/piqueserver), it is unlikely to run on PySnip or PySpades. (you should upgrade to piqueserver anyways)
+* This script was designed for and tested on [piqueserver](https://github.com/piqueserver/piqueserver), it is highly unlikely to run on PySnip or PySpades.
 
 ### Contributors:
 Thank you very much to the following contributors for improving the script:
