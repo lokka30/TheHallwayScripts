@@ -1,5 +1,5 @@
 """
-THVersionBlocker (v1)
+THVersionBlocker (v2)
 
 Description:
     Created for server 'The Hallway', this script
@@ -14,7 +14,7 @@ More information: More information: https://github.com/lokka30/TheHallwayScripts
 
 def apply_script(protocol, connection, config):
 
-    class VersionBlockerProtocol(protocol):
+    class VersionBlockerConnection(connection):
         def on_login(self, name):
             full = self.client_string
             
@@ -33,4 +33,4 @@ def apply_script(protocol, connection, config):
             
             return self, name
 
-    return VersionBlockerProtocol, connection
+    return protocol, VersionBlockerConnection
