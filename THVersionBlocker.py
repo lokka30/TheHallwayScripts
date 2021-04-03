@@ -1,5 +1,5 @@
 """
-THVersionBlocker (v2)
+THVersionBlocker (v3)
 
 Description:
     Created for server 'The Hallway', this script
@@ -16,19 +16,16 @@ def apply_script(protocol, connection, config):
 
     class VersionBlockerConnection(connection):
         def on_login(self, name):
-            full = self.client_string
+            client = self.client_string
             
-            if full is None or full == "":
+            if client is None or client == "":
                 return self, name
             
+            print(name + " joined with client '" + client + "'.")
             for players in self.protocol.players.values():
-                players.send_chat(name + " joined with client '" + full + "'.")
+                players.send_chat(name + " joined with client '" + client + "'.")
             
-            split = full.split(" ")
-            client = split[0]
-            version = split[1].substring(0)
-            
-            if client == "OpenSpades" and version == "0.0.12b":
+            if client.find("OpenSpades") != -1 and client.find("0.0.12b") != -1:
                 reactor.callLater(0.5, self.kick, "OpenSpades 0.0.12b is prohibited on this server.", False)
             
             return self, name
