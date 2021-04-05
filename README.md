@@ -22,3 +22,8 @@ Please create an issue on the [issue tracker](https://github.com/lokka30/THProxy
 
 # What about the other scripts?
 This repository only contains scripts that belong to us - we will not release other people's work, without their permission.
+
+Here are other open-source scripts that our server utilises:
+* Rakete's teleport: https://github.com/Rakete175/Piqueserver-server-scripts
+* Mile's glow: https://github.com/yusufcardinal/glow
+* Mile's imger: https://github.com/yusufcardinal/imger
