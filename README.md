@@ -5,6 +5,9 @@ These scripts are created by and run on [The Hallway](https://discord.gg/Butndsd
 
 Fellow server owners are free to install these scripts and adapt them as they wish, since all are licensed under the [MIT License](https://github.com/lokka30/TheHallwayScripts/blob/main/LICENSE).
 
+# Downloads
+See [releases](https://github.com/lokka30/TheHallwayScripts/releases).
+
 # Documentation
 See the [wiki](https://github.com/lokka30/TheHallwayScripts/wiki).
 
