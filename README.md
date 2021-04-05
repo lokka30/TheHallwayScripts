@@ -1,7 +1,7 @@
 <img src="https://user-images.githubusercontent.com/59464084/113531176-a1921480-95fa-11eb-99ff-8c1bb27f21a4.png" width="150" height="150" />
 
 # TheHallway's Scripts
-These are Python scripts created for [piqueserver](https://github.com/lokka30/THProxyDetector/issues), an Ace of Spades 'classic' server implementation.
+These are Python scripts created for [piqueserver](https://github.com/piqueserver/piqueserver), an Ace of Spades 'classic' server implementation.
 
 These scripts are created by and run on [The Hallway](https://discord.gg/ButndsdGua), a CTF server with the original 'hallway' map by izzy.
 
@@ -24,6 +24,7 @@ Please create an issue on the [issue tracker](https://github.com/lokka30/THProxy
 This repository only contains scripts that belong to us - we will not release other people's work, without their permission.
 
 Here are other open-source scripts that our server utilises:
+* piqueserver's ported scripts: https://github.com/piqueserver/piqueserver
 * Rakete's teleport: https://github.com/Rakete175/Piqueserver-server-scripts
 * Mile's glow: https://github.com/yusufcardinal/glow
 * Mile's imger: https://github.com/yusufcardinal/imger
