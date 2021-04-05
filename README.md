@@ -12,9 +12,5 @@ See the [wiki](https://github.com/lokka30/TheHallwayScripts/wiki).
 * `main`: released scripts that have been tested, ready for server use
 * `dev`: scripts that are in development / new versions of released scripts that are in development. may/may not have been tested.
 
-# Undocumented Scripts
-## THVersionBlocker.py
-This script requires testing. It is highly likely that it won't work at all. Never ran it.
-
 # Support:
 Please create an issue on the [issue tracker](https://github.com/lokka30/THProxyDetector/issues) or contact me in the development chat on [The Hallway's Discord](https://discord.gg/ButndsdGua).
