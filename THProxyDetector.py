@@ -1,12 +1,13 @@
 """
 THProxyDetector 
-Version: Build 5
+Version: Build 6
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
 """
 import json
 import requests
+import asyncio
 from requests.exceptions import Timeout
 from twisted.internet import reactor
 
@@ -25,18 +26,28 @@ def apply_script(protocol, connection, config):
         When users log in, this will check their IP address.
         """
         def on_login(self, username):
+            asyncio.run(Detectors.check_player(self, username))
+            return connection.on_login(self, username)
+    
+    class Detectors:
+        """
+        Runs proxy detection functions on player.
+        """
+        @classmethod
+        async def check_player(self, username):
             detectedByProxyCheckIo = Detectors.check_proxycheck_io(self.address[0], username)
             detectedByVpnApiIo = Detectors.check_vpnapi_io(self.address[0], username)
             detectedByIpTeohIo = Detectors.check_ip_teoh_io(self.address[0], username)
             
+            await detectedByProxyCheckIo
+            await detectedByVpnApiIo
+            await detectedByIpTeohIo
+            
             if(detectedByProxyCheckIo or detectedByVpnApiIo or detectedByIpTeohIo):
                 reactor.callLater(0.5, self.kick, "VPNs and proxies are prohibited on this server.", False)
             else:
-                print("THProxyDetector:  [Info] '%s' does not seem to be using a proxy." % username) 
-            
-            return connection.on_login(self, username)
+                print("THProxyDetector:  [Info] '%s' does not seem to be using a proxy." % username)
     
-    class Detectors:
         """
         Use proxycheck.io to check if the address is a VPN or proxy.
         Returns True if it is a VPN or proxy.
