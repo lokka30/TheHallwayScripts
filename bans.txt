@@ -1,0 +1,206 @@
+[
+  [
+    "chado2 coorason",
+    "186.91.42.79",
+    ": aimbot esp",
+    null
+  ],
+  [
+    "udu",
+    "14.44.25.163",
+    ": aimbot esp",
+    null
+  ],
+  [
+    "(unknown)",
+    "93.86.108.192",
+    null,
+    null
+  ],
+  [
+    "(unknown)",
+    "187.7.180.67",
+    "aimbot/nr",
+    null
+  ],
+  [
+    "yon",
+    "186.88.248.47",
+    ": aimbot esp",
+    null
+  ],
+  [
+    "(unknown)",
+    "58.227.202.63",
+    "Aimbot/NR",
+    null
+  ],
+  [
+    "Skolnik",
+    "193.9.243.155",
+    ": esp",
+    null
+  ],
+  [
+    "(unknown)",
+    "201.198.177.198",
+    null,
+    null
+  ],
+  [
+    "chicken",
+    "185.244.171.166",
+    ": noclip",
+    null
+  ],
+  [
+    "(unknown)",
+    "83.187.0.0/16",
+    "blind squirrel",
+    null
+  ],
+  [
+    "[BFG]NumUser",
+    "217.19.215.47",
+    ": noclip",
+    null
+  ],
+  [
+    "Vital Because",
+    "181.223.145.41",
+    ": aimbot",
+    null
+  ],
+  [
+    "maoleee",
+    "177.220.178.167",
+    ": esp aimbot",
+    null
+  ],
+  [
+    "poo",
+    "116.124.218.164",
+    ": esp",
+    null
+  ],
+  [
+    "(unknown)",
+    "181.61.2.133",
+    "aimbot",
+    null
+  ],
+  [
+    "George Miller",
+    "172.83.40.49",
+    ": aimbot",
+    null
+  ],
+  [
+    "?",
+    "71.19.248.193",
+    "",
+    null
+  ],
+  [
+    "a",
+    "177.227.50.240",
+    ": failing at evading",
+    null
+  ],
+  [
+    "nelson ",
+    "186.115.37.49",
+    ": aimbot esp",
+    null
+  ],
+  [
+    "Leandro",
+    "189.13.15.195",
+    ": aimbot",
+    null
+  ],
+  [
+    "(unknown)",
+    "186.23.226.91",
+    "esp",
+    null
+  ],
+  [
+    "TITAN Aleph Y",
+    "45.188.150.104",
+    ": noclip",
+    null
+  ],
+  [
+    "BALA FANTASMA",
+    "181.46.137.211",
+    ": aimbot esp",
+    null
+  ],
+  [
+    "FUCKING NeGGERS",
+    "31.60.11.77",
+    "You're pathetic, hacking, aimbot.",
+    null
+  ],
+  [
+    "PoopCock",
+    "85.76.149.181",
+    ": esp/norecoil",
+    null
+  ],
+  [
+    "Jacho",
+    "83.194.143.25",
+    ": wallbang",
+    null
+  ],
+  [
+    "(unknown)",
+    "190.163.203.39",
+    "evasion",
+    null
+  ],
+  [
+    "MAFOOF",
+    "37.120.215.173",
+    ": mb",
+    null
+  ],
+  [
+    "(unknown)",
+    "47.216.31.205",
+    "ESP, openly admitted to ESP too https://cdn.lewd.host/KonFWsBo.png",
+    null
+  ],
+  [
+    "(unknown)",
+    "1.236.233.168",
+    "noclip",
+    null
+  ],
+  [
+    "Loocy",
+    "178.220.221.113",
+    "Ragebot, die",
+    null
+  ],
+  [
+    "migue fx",
+    "181.53.13.232",
+    ": aimbot,esp",
+    null
+  ],
+  [
+    "(unknown)",
+    "90.245.213.229",
+    "ESP, pathetic",
+    4381814.0539608635
+  ],
+  [
+    "Deuce1",
+    "90.246.213.229",
+    "ESP, pathetic",
+    4381827.138020461
+  ]
+]
