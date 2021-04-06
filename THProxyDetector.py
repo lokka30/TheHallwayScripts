@@ -1,6 +1,6 @@
 """
 THProxyDetector 
-Version: Build 8
+Version: Build 9
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
@@ -142,12 +142,12 @@ def apply_script(protocol, connection, config):
                         else:
                             Detectors.log("ERROR", service, "Invalid JSON.")
             
-        @classmethod
+        @classmethod -> None
         def kick_player(self, service):
             reactor.callLater(0.5, self.kick, KICK_REASON, KICK_SILENT)
         
         @classmethod
-        def log(severity, service, message):
+        def log(severity, service, message) -> None:
             print("[" + severity + "] [" + service + "]: " + message)
     
     return protocol, ProxyDetectorConnection
