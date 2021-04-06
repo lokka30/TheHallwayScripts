@@ -1,6 +1,6 @@
 """
 THProxyDetector 
-Version: Build 11
+Version: Build 12
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
@@ -70,7 +70,7 @@ def apply_script(protocol, connection, config):
         When users log in, this will check their IP address.
         """
         def on_login(self, username):
-            Detectors.debug(username + " joined.")
+            #Detectors.debug("%s joined." % username) # python thinks we're giving it 2 arguments. lmao
         
             loop = asyncio.get_event_loop()
             if PROXYCHECK_IO_ENABLED:
