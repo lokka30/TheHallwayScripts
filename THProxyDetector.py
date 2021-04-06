@@ -1,6 +1,6 @@
 """
 THProxyDetector 
-Version: Build 12
+Version: Build 13
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
@@ -32,7 +32,7 @@ VPNAPI_IO_ENABLED = False
 VPNAPI_IO_KEY = "put key here (required)."
 
 # https://ip.teoh.io/vpn-proxy-api --- a free, key-less proxy detection service
-IP_TEOH_IO_ENABLED = False
+IP_TEOH_IO_ENABLED = True
 
 """
 Section 2
@@ -74,15 +74,15 @@ def apply_script(protocol, connection, config):
         
             loop = asyncio.get_event_loop()
             if PROXYCHECK_IO_ENABLED:
-                Detectors.debug(username + " - PROXYCHECK_IO enabled, checking player...")
+                #Detectors.debug(username + " - PROXYCHECK_IO enabled, checking player...")
                 ensureDeferred(as_deferred(Detectors.check_player(self, username, "PROXYCHECK_IO")))
                 
             if VPNAPI_IO_ENABLED:
-                Detectors.debug(username + " - VPNAPI_IO enabled, checking player...")
+                #Detectors.debug(username + " - VPNAPI_IO enabled, checking player...")
                 ensureDeferred(as_deferred(Detectors.check_player(self, username, "VPNAPI_IO")))
                 
             if IP_TEOH_IO_ENABLED:
-                Detectors.debug(username + " - IP_TEOH_IO enabled, checking player...")
+                #Detectors.debug(username + " - IP_TEOH_IO enabled, checking player...")
                 ensureDeferred(as_deferred(Detectors.check_player(self, username, "IP_TEOH_IO")))
                 
             return connection.on_login(self, username)
@@ -93,7 +93,7 @@ def apply_script(protocol, connection, config):
         """
         @classmethod
         async def check_player(self, username, service) -> None:
-            Detectors.debug(username + " - Checking with service " + service + "...")
+            #Detectors.debug(username + " - Checking with service " + service + "...")
        
             async with aiohttp.ClientSession() as session:
                 
