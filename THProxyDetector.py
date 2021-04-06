@@ -1,6 +1,6 @@
 """
 THProxyDetector 
-Version: Build 10
+Version: Build 11
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
@@ -70,14 +70,19 @@ def apply_script(protocol, connection, config):
         When users log in, this will check their IP address.
         """
         def on_login(self, username):
+            Detectors.debug(username + " joined.")
+        
             loop = asyncio.get_event_loop()
             if PROXYCHECK_IO_ENABLED:
+                Detectors.debug(username + " - PROXYCHECK_IO enabled, checking player...")
                 ensureDeferred(as_deferred(Detectors.check_player(self, username, "PROXYCHECK_IO")))
                 
             if VPNAPI_IO_ENABLED:
+                Detectors.debug(username + " - VPNAPI_IO enabled, checking player...")
                 ensureDeferred(as_deferred(Detectors.check_player(self, username, "VPNAPI_IO")))
                 
             if IP_TEOH_IO_ENABLED:
+                Detectors.debug(username + " - IP_TEOH_IO enabled, checking player...")
                 ensureDeferred(as_deferred(Detectors.check_player(self, username, "IP_TEOH_IO")))
                 
             return connection.on_login(self, username)
@@ -88,6 +93,8 @@ def apply_script(protocol, connection, config):
         """
         @classmethod
         async def check_player(self, username, service) -> None:
+            Detectors.debug(username + " - Checking with service " + service + "...")
+       
             async with aiohttp.ClientSession() as session:
                 
                 """
@@ -96,7 +103,7 @@ def apply_script(protocol, connection, config):
                 if service == "PROXYCHECK_IO":
                     Detectors.log("INFO", service, "Checking status of " + username + "...")
                     url = str("https://proxycheck.io/v2/" + address + "?key=" + PROXYCHECK_IO_API_KEY)
-                    async with session.get(url, allow_redirects=False, timeout=2) as response:
+                    async with session.get(url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
                         json = await response.json()
                         if json is not None:
                             if json[address]["proxy"] == "yes" or json[address]["type"] == "VPN":
@@ -114,7 +121,7 @@ def apply_script(protocol, connection, config):
                 if service == "VPNAPI_IO":
                     Detectors.log("INFO", service, "Checking status of " + username + "...")
                     url = str("https://vpnapi.io/api/" + address + "?key=" + VPNAPI_IO_KEY)
-                    async with session.get(url, allow_redirects=False, timeout=2) as response:
+                    async with session.get(url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
                         json = await response.json()
                         if json is not None:
                             if json["security"]["vpn"] == "True" or json["security"]["proxy"] == "True":
@@ -132,7 +139,7 @@ def apply_script(protocol, connection, config):
                 if service == "IP_TEOH_IO":
                     Detectors.log("INFO", service, "Checking status of " + username + "...")
                     url = str("https://ip.teoh.io/api/vpn/" + address)
-                    async with session.get(url, allow_redirects=False, timeout=2) as response:
+                    async with session.get(url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
                         json = await response.json()
                         if json is not None:
                             if json["vpn_or_proxy"] == "yes":
