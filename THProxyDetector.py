@@ -1,6 +1,6 @@
 """
 THProxyDetector 
-Version: Build 9
+Version: Build 10
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
@@ -8,7 +8,6 @@ More information: https://github.com/lokka30/TheHallwayScripts
 import json
 import aiohttp
 import asyncio
-from requests.exceptions import Timeout
 from twisted.internet import reactor
 
 """
@@ -51,6 +50,9 @@ Section 3
 # Should the kick not be broadcasted to everyone? True / False.
 KICK_SILENT = False
 
+# Should debug messages be printed to the console?
+PRINT_DEBUG_LOGGING = False
+
 """
 ##########################
 # END USER CONFIGURATION #
@@ -70,10 +72,10 @@ def apply_script(protocol, connection, config):
         def on_login(self, username):
             loop = asyncio.get_event_loop()
             if PROXYCHECK_IO_ENABLED:
-                ensureDeferred(as_deferred(Detectors.check_player(self, username, "PROXYCHECK_IO"))
+                ensureDeferred(as_deferred(Detectors.check_player(self, username, "PROXYCHECK_IO")))
                 
             if VPNAPI_IO_ENABLED:
-                ensureDeferred(as_deferred(Detectors.check_player(self, username, "VPNAPI_IO"))
+                ensureDeferred(as_deferred(Detectors.check_player(self, username, "VPNAPI_IO")))
                 
             if IP_TEOH_IO_ENABLED:
                 ensureDeferred(as_deferred(Detectors.check_player(self, username, "IP_TEOH_IO")))
@@ -129,7 +131,7 @@ def apply_script(protocol, connection, config):
                 """  
                 if service == "IP_TEOH_IO":
                     Detectors.log("INFO", service, "Checking status of " + username + "...")
-                    url = str(https://ip.teoh.io/api/vpn/" + address)
+                    url = str("https://ip.teoh.io/api/vpn/" + address)
                     async with session.get(url, allow_redirects=False, timeout=2) as response:
                         json = await response.json()
                         if json is not None:
@@ -142,12 +144,17 @@ def apply_script(protocol, connection, config):
                         else:
                             Detectors.log("ERROR", service, "Invalid JSON.")
             
-        @classmethod -> None
-        def kick_player(self, service):
+        @classmethod
+        def kick_player(self, service) -> None:
             reactor.callLater(0.5, self.kick, KICK_REASON, KICK_SILENT)
         
         @classmethod
         def log(severity, service, message) -> None:
-            print("[" + severity + "] [" + service + "]: " + message)
+            print("[THProxyDetector] [" + severity + "] [" + service + "]: " + message)
+            
+        @classmethod
+        def debug(message) -> None:
+            if(PRINT_DEBUG_LOGGING):
+                print("[THProxyDetector] [DEBUG] " + message)
     
     return protocol, ProxyDetectorConnection
