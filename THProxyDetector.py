@@ -1,6 +1,6 @@
 """
 THProxyDetector 
-Version: Build 7
+Version: Build 8
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
@@ -70,13 +70,13 @@ def apply_script(protocol, connection, config):
         def on_login(self, username):
             loop = asyncio.get_event_loop()
             if PROXYCHECK_IO_ENABLED:
-                loop.run_until_complete(Detectors.check_player(self, username, "PROXYCHECK_IO"))
+                ensureDeferred(as_deferred(Detectors.check_player(self, username, "PROXYCHECK_IO"))
                 
             if VPNAPI_IO_ENABLED:
-                loop.run_until_complete(Detectors.check_player(self, username, "VPNAPI_IO"))
+                ensureDeferred(as_deferred(Detectors.check_player(self, username, "VPNAPI_IO"))
                 
             if IP_TEOH_IO_ENABLED:
-                loop.run_until_complete(Detectors.check_player(self, username, "IP_TEOH_IO"))
+                ensureDeferred(as_deferred(Detectors.check_player(self, username, "IP_TEOH_IO")))
                 
             return connection.on_login(self, username)
     
@@ -145,5 +145,9 @@ def apply_script(protocol, connection, config):
         @classmethod
         def kick_player(self, service):
             reactor.callLater(0.5, self.kick, KICK_REASON, KICK_SILENT)
+        
+        @classmethod
+        def log(severity, service, message):
+            print("[" + severity + "] [" + service + "]: " + message)
     
     return protocol, ProxyDetectorConnection
