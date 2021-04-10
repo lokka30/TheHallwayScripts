@@ -11,9 +11,9 @@ from requests.exceptions import Timeout
 from twisted.internet import reactor
 
 # Set a key to "disabled" to disable it.
-PROXYCHECK_IO_KEY = str("disabled") #https://proxycheck.io/ - this API requires a key (Free).
-VPNAPI_IO_KEY = str("disabled") #https://vpnapi.io/ - this API requires a key (Free).
-IP_TEOH_IO_KEY = str("enabled") #https://ip.teoh.io/vpn-proxy-api - NOTE: this API does not utilise keys. This is only here so you can disable it if you want.
+PROXYCHECK_IO_KEY = "disabled" #https://proxycheck.io/ - this API requires a key (Free).
+VPNAPI_IO_KEY = "disabled" #https://vpnapi.io/ - this API requires a key (Free).
+IP_TEOH_IO_KEY = "enabled" #https://ip.teoh.io/vpn-proxy-api - NOTE: this API does not utilise keys. This is only here so you can disable it if you want.
 
 HEADERS = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
 
