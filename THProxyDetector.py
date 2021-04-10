@@ -1,14 +1,14 @@
 """
 THProxyDetector 
-Version: Build 13
+Version: Build 14
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
 """
+from twisted.internet import defer, reactor
+import asyncio
 import json
 import aiohttp
-import asyncio
-from twisted.internet import reactor
 
 """
 ######################
