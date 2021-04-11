@@ -1,6 +1,6 @@
 """
 THPlayerList
-Version: Build 1
+Version: Build 2
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
@@ -14,45 +14,52 @@ def list_players(connection):
     moderators = []
     guards = []
     trusted = []
-    members = connection.protocol.players
+    members = []
 
-    can_see_staff = connection.user_type == 'guard' or connection.user_type == 'moderator' or connection.user_type == 'admin'
+    can_see_staff = 'guard' in connection.user_types or 'moderator' in connection.user_types or connection.admin
 
-    for player in connection.protocol.players:
-        if player.user_type == 'trusted':
-            trusted += player
-            members.remove(player)
+    for player in list(connection.protocol.players.values()):
+        label = "(#%s) %s" % (str(player.player_id), player.name)
+
         if can_see_staff:
-            if player.user_type == 'guard':
-                guards += player
-                members.remove(player)
-            elif player.user_type == 'moderator':
-                moderators += player
-                members.remove(player)
-            elif player.user_type == 'admin':
-                admins += player
-                members.remove(player)
-        else:
             if player.invisible:
-                members.remove(player)
+                label += " (INV)"
 
-    connection.send_chat("---+ Online Players +---")
-    send_list(connection, can_see_staff, "Admins", admins)
-    send_list(connection, can_see_staff, "Moderators", moderators)
-    send_list(connection, can_see_staff, "Guards", guards)
-    send_list(connection, can_see_staff, "Trusted", trusted)
-    send_list(connection, can_see_staff, "Members", members)
+            if player.admin:
+                admins.append(label)
+                continue
+
+            elif 'moderator' in player.user_types:
+                moderators.append(label)
+                continue
+
+            elif 'guard' in player.user_types:
+                guards.append(label)
+                continue
+
+        if player.invisible:
+            continue
+
+        if 'trusted' in player.user_types:
+            trusted.append(label)
+            continue
+
+        members.append(label)
+
+    connection.send_chat("---+ Online Players (%s) +---" % str(
+        len(admins) + len(moderators) + len(guards) + len(trusted) + len(members)))
+    send_list(connection, "Admins", admins)
+    send_list(connection, "Moderators", moderators)
+    send_list(connection, "Guards", guards)
+    send_list(connection, "Trusted", trusted)
+    send_list(connection, "Members", members)
 
 
-def send_list(connection, can_see_staff, list_name, players):
-    if players is not None:
-        connection.send_chat("%list_name% (%list_len%):".format(list_name, len(players)))
-        for player in players:
-            invisible = ""
-            if player.invisible and can_see_staff:
-                invisible = " (INV)"
-
-            connection.send_chat("(#%player_id%) %player_name% %is_invisible%".format(player.player_id, player.name, invisible))
+def send_list(connection, list_name, labels):
+    if len(labels) != 0:
+        connection.send_chat("%s (%s):" % (list_name, str(len(labels))))
+        for label in labels:
+            connection.send_chat(label)
 
 
 # noinspection PyUnusedLocal
