@@ -5,8 +5,11 @@ License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
 """
+import asyncio
 import aiohttp
 from twisted.internet import defer, reactor
+from twisted.internet.defer import ensureDeferred, Deferred
+from piqueserver.utils._async import as_deferred
 
 """
 ######################
@@ -68,22 +71,25 @@ def apply_script(protocol, connection, config):
         """
         When users log in, this will check their IP address.
         """
-
         def on_login(self, username):
-            # Detectors.debug("%s joined." % username) # python thinks we're giving it 2 arguments. lmao
+            if PRINT_DEBUG_LOGGING:
+                print("THProxyDetector: " + username + " joined, checking services...")
 
             #loop = asyncio.get_event_loop()
             if PROXYCHECK_IO_ENABLED:
-                # Detectors.debug(username + " - PROXYCHECK_IO enabled, checking player...")
-                defer.ensureDeferred(defer.as_deferred(Detectors.check_player(self, self.address[0], username, "PROXYCHECK_IO")))
+                if PRINT_DEBUG_LOGGING:
+                    print("THProxyDetector: PROXYCHECK_IO enabled, checking " + username + "...")
+                ensureDeferred(as_deferred(Detectors.check_player(self, self.address[0], username, "PROXYCHECK_IO")))
 
             if VPNAPI_IO_ENABLED:
-                # Detectors.debug(username + " - VPNAPI_IO enabled, checking player...")
-                defer.ensureDeferred(defer.as_deferred(Detectors.check_player(self, self.address[0], username, "VPNAPI_IO")))
+                if PRINT_DEBUG_LOGGING:
+                    print("THProxyDetector: VPNAPI_IO enabled, checking " + username + "...")
+                ensureDeferred(as_deferred(Detectors.check_player(self, self.address[0], username, "VPNAPI_IO")))
 
             if IP_TEOH_IO_ENABLED:
-                # Detectors.debug(username + " - IP_TEOH_IO enabled, checking player...")
-                defer.ensureDeferred(defer.as_deferred(Detectors.check_player(self, self.address[0], username, "IP_TEOH_IO")))
+                if PRINT_DEBUG_LOGGING:
+                    print("THProxyDetector: IP_TEOH_IO enabled, checking " + username + "...")
+                ensureDeferred(as_deferred(Detectors.check_player(self, self.address[0], username, "IP_TEOH_IO")))
 
             return connection.on_login(self, username)
 
@@ -94,76 +100,68 @@ def apply_script(protocol, connection, config):
 
         # noinspection PyMethodParameters
         @classmethod
-        async def check_player(self, address, username, service) -> None:
-            # Detectors.debug(username + " - Checking with service " + service + "...")
-
+        async def check_player(self, connection, address, username, service) -> None:
             async with aiohttp.ClientSession() as session:
 
                 """
                 proxycheck.io
                 """
                 if service == "PROXYCHECK_IO":
-                    Detectors.log("INFO", service, "Checking status of " + username + "...")
+                    if PRINT_DEBUG_LOGGING:
+                        print("THProxyDetector: Service " + service + " is checking " + username + "...")
                     url = str("https://proxycheck.io/v2/" + address + "?key=" + PROXYCHECK_IO_API_KEY)
                     async with session.get(url=url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
-                        response_json = await response.json()
+                        response_json = await response.json(content_type='text/plain;charset=utf-8')
                         if response_json is not None:
                             if response_json[address]["proxy"] == "yes" or response_json[address]["type"] == "VPN":
-                                Detectors.kick_player(self)
-                                Detectors.log("WARNING", service, username + " was detected for using a VPN or proxy.")
+                                Detectors.kick_player(connection)
+                                print("THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
                                 return
                             else:
-                                Detectors.log("INFO", service, username + " was not detected for using a VPN or proxy.")
+                                print("THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
                         else:
-                            Detectors.log("ERROR", service, "Invalid JSON.")
+                            print("THProxyDetector: Error for " + service + ": invalid JSON.")
 
                 """
                 vpnapi.io
                 """
                 if service == "VPNAPI_IO":
-                    Detectors.log("INFO", service, "Checking status of " + username + "...")
+                    if PRINT_DEBUG_LOGGING:
+                        print("THProxyDetector: Service " + service + " is checking " + username + "...")
                     url = str("https://vpnapi.io/api/" + address + "?key=" + VPNAPI_IO_KEY)
                     async with session.get(url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
-                        response_json = await response.json()
+                        response_json = await response.json(content_type='text/plain;charset=utf-8')
                         if response_json is not None:
                             if response_json["security"]["vpn"] == "True" or response_json["security"]["proxy"] == "True":
-                                Detectors.kick_player(self)
-                                Detectors.log("WARNING", service, username + " was detected for using a VPN or proxy.")
+                                Detectors.kick_player(connection)
+                                print("THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
                                 return
                             else:
-                                Detectors.log("INFO", service, username + " was not detected for using a VPN or proxy.")
+                                print("THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
                         else:
-                            Detectors.log("ERROR", service, "Invalid JSON.")
+                            print("THProxyDetector: Error for " + service + ": invalid JSON.")
 
                 """
                 ip.teoh.io
                 """
                 if service == "IP_TEOH_IO":
-                    Detectors.log("INFO", service, "Checking status of " + username + "...")
+                    if PRINT_DEBUG_LOGGING:
+                        print("THProxyDetector: Service " + service + " is checking " + username + "...")
                     url = str("https://ip.teoh.io/api/vpn/" + address)
                     async with session.get(url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
-                        response_json = await response.json()
+                        response_json = await response.json(content_type='text/plain;charset=utf-8')
                         if response_json is not None:
                             if response_json["vpn_or_proxy"] == "yes":
-                                Detectors.kick_player(self)
-                                Detectors.log("WARNING", service, username + " was detected for using a VPN or proxy.")
+                                Detectors.kick_player(connection)
+                                print("THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
                                 return
                             else:
-                                Detectors.log("INFO", service, username + " was not detected for using a VPN or proxy.")
+                                print("THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
                         else:
-                            Detectors.log("ERROR", service, "Invalid JSON.")
+                            print("THProxyDetector: Error for " + service + ": invalid JSON.")
 
         @classmethod
         def kick_player(self) -> None:
             reactor.callLater(0.5, connection.kick, KICK_REASON, KICK_SILENT)
-
-        @classmethod
-        def log(self, severity, service, message) -> None:
-            print("[THProxyDetector] [" + severity + "] [" + service + "]: " + message)
-
-        @classmethod
-        def debug(cls, message) -> None:
-            if PRINT_DEBUG_LOGGING:
-                print("[THProxyDetector] [DEBUG] " + message)
 
     return protocol, ProxyDetectorConnection
