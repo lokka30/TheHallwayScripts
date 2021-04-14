@@ -1,3 +1,5 @@
+Psst: looking for the scripts currently in development? The ones in the main branch are older releases, please see the corresponding branch for the script you are interested in.
+
 <img src="https://user-images.githubusercontent.com/59464084/113531176-a1921480-95fa-11eb-99ff-8c1bb27f21a4.png" width="150" height="150" />
 
 # TheHallway's Scripts
