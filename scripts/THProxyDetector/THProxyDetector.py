@@ -134,7 +134,7 @@ def apply_script(protocol, connection, config):
                             else:
                                 print(
                                     "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
-                                connection.protocol.cached_approved_addresses += address
+                                connection.protocol.cached_approved_addresses.append(address)
                         else:
                             print("THProxyDetector: Error for " + service + ": invalid JSON.")
 
@@ -156,7 +156,7 @@ def apply_script(protocol, connection, config):
                             else:
                                 print(
                                     "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
-                                connection.protocol.cached_approved_addresses += address
+                                connection.protocol.cached_approved_addresses.append(address)
                         else:
                             print("THProxyDetector: Error for " + service + ": invalid JSON.")
 
@@ -178,17 +178,17 @@ def apply_script(protocol, connection, config):
                             else:
                                 print(
                                     "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
-                                connection.protocol.cached_approved_addresses += address
+                                connection.protocol.cached_approved_addresses.append(address)
                         else:
                             print("THProxyDetector: Error for " + service + ": invalid JSON.")
 
         @classmethod
         def kick_player(self, connection) -> None:
             if connection.address[0] not in connection.protocol.cached_denied_addresses:
-                connection.protocol.cached_denied_addresses += connection.address[0]
+                connection.protocol.cached_denied_addresses.append(connection.address[0])
 
             if connection.address[0] in connection.protocol.cached_approved_addresses:
-                connection.protocol.cached_approved_addresses -= connection.address[0]
+                connection.protocol.cached_approved_addresses.remove(connection.address[0])
 
             reactor.callLater(0.5, connection.kick, KICK_REASON, KICK_SILENT)
 
