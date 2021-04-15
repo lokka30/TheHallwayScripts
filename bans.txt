@@ -158,7 +158,7 @@
   [
     "(unknown)",
     "190.163.203.39",
-    "evasion",
+    "his name was NAZI on my server and I hope you perceive it as questionable as me",
     null
   ],
   [
@@ -192,15 +192,57 @@
     null
   ],
   [
-    "SammyBallz",
-    "104.193.152.1",
+    "Prox390",
+    "181.140.201.142",
     ": aimbot",
-    3861994.292717826
+    null
   ],
   [
-    "Nagatoro Step o",
-    "77.20.253.221",
-    "get good loser, aimbot and possibly ESP too. Either way you're retarded",
-    4467607.874725655
+    "MASTERCRACK",
+    "186.170.254.22",
+    ": nofog",
+    null
+  ],
+  [
+    "ce3cejko",
+    "46.34.228.45",
+    ": esp",
+    null
+  ],
+  [
+    "SonnyBlack",
+    "213.142.96.202",
+    ": toxic",
+    null
+  ],
+  [
+    "(unknown)",
+    "94.194.234.94",
+    "Ahriman made a swastika on my server",
+    null
+  ],
+  [
+    "Otaku-01-",
+    "200.68.128.102",
+    "ban evading, norecoil, esp",
+    null
+  ],
+  [
+    "db",
+    "186.87.92.132",
+    "db esp",
+    null
+  ],
+  [
+    "(unknown)",
+    "179.108.7.248",
+    "ESP",
+    null
+  ],
+  [
+    "Atanarjuat",
+    "24.237.158.244",
+    ": racism",
+    4272188.009713758
   ]
 ]
