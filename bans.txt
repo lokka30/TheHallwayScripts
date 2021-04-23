@@ -240,9 +240,33 @@
     null
   ],
   [
-    "Atanarjuat",
-    "24.237.158.244",
-    ": racism",
-    4272188.009713758
+    "(unknown)",
+    "190.190.56.18",
+    "Noclip, known cheater.",
+    null
+  ],
+  [
+    "(unknown)",
+    "179.189.74.244",
+    "Noclip, known cheater.",
+    null
+  ],
+  [
+    "(unknown)",
+    "181.235.81.153",
+    "Igotikbot known hacker",
+    5494775.021598279
+  ],
+  [
+    "Gehenna",
+    "201.249.21.230",
+    ": multiple bulets",
+    null
+  ],
+  [
+    "(unknown)",
+    "80.0.121.94",
+    "operator9029",
+    null
   ]
 ]
