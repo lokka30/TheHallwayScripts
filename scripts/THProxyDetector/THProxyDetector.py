@@ -1,6 +1,6 @@
 """
 THProxyDetector 
-Version: Build 15
+Version: Build 17
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
@@ -33,7 +33,7 @@ VPNAPI_IO_ENABLED = False
 VPNAPI_IO_KEY = "put key here (required)."
 
 # https://ip.teoh.io/vpn-proxy-api --- a free, key-less proxy detection service
-IP_TEOH_IO_ENABLED = True
+IP_TEOH_IO_ENABLED = False
 
 """
 Section 2
@@ -66,16 +66,29 @@ HEADERS = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 # noinspection PyUnusedLocal
 def apply_script(protocol, connection, config):
-    class ProxyDetectorConnection(connection):
+    class PDProtocol(protocol):
+        cached_approved_addresses = ["127.0.0.1"]
+        cached_denied_addresses = []
+
+    class PDConnection(connection):
 
         """
         When users log in, this will check their IP address.
         """
+
         def on_login(self, username):
             if PRINT_DEBUG_LOGGING:
                 print("THProxyDetector: " + username + " joined, checking services...")
 
-            #loop = asyncio.get_event_loop()
+            if self.address[0] in self.protocol.cached_approved_addresses:
+                print("THProxyDetector: " + username + " has a cached address (approved)")
+                return
+
+            if self.address[0] in self.protocol.cached_denied_addresses:
+                print("THProxyDetector: " + username + " has a cached address (denied)")
+                Detectors.kick_player(self)
+                return
+
             if PROXYCHECK_IO_ENABLED:
                 if PRINT_DEBUG_LOGGING:
                     print("THProxyDetector: PROXYCHECK_IO enabled, checking " + username + "...")
@@ -111,14 +124,17 @@ def apply_script(protocol, connection, config):
                         print("THProxyDetector: Service " + service + " is checking " + username + "...")
                     url = str("https://proxycheck.io/v2/" + address + "?key=" + PROXYCHECK_IO_API_KEY)
                     async with session.get(url=url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
-                        response_json = await response.json(content_type='text/plain;charset=utf-8')
+                        response_json = await response.json(content_type=None)
                         if response_json is not None:
                             if response_json[address]["proxy"] == "yes" or response_json[address]["type"] == "VPN":
                                 Detectors.kick_player(connection)
-                                print("THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
+                                print(
+                                    "THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
                                 return
                             else:
-                                print("THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
+                                print(
+                                    "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
+                                connection.protocol.cached_approved_addresses.append(address)
                         else:
                             print("THProxyDetector: Error for " + service + ": invalid JSON.")
 
@@ -130,14 +146,17 @@ def apply_script(protocol, connection, config):
                         print("THProxyDetector: Service " + service + " is checking " + username + "...")
                     url = str("https://vpnapi.io/api/" + address + "?key=" + VPNAPI_IO_KEY)
                     async with session.get(url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
-                        response_json = await response.json(content_type='text/plain;charset=utf-8')
+                        response_json = await response.json(content_type=None)
                         if response_json is not None:
                             if response_json["security"]["vpn"] == "True" or response_json["security"]["proxy"] == "True":
                                 Detectors.kick_player(connection)
-                                print("THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
+                                print(
+                                    "THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
                                 return
                             else:
-                                print("THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
+                                print(
+                                    "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
+                                connection.protocol.cached_approved_addresses.append(address)
                         else:
                             print("THProxyDetector: Error for " + service + ": invalid JSON.")
 
@@ -149,19 +168,28 @@ def apply_script(protocol, connection, config):
                         print("THProxyDetector: Service " + service + " is checking " + username + "...")
                     url = str("https://ip.teoh.io/api/vpn/" + address)
                     async with session.get(url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
-                        response_json = await response.json(content_type='text/plain;charset=utf-8')
+                        response_json = await response.json(content_type=None)
                         if response_json is not None:
                             if response_json["vpn_or_proxy"] == "yes":
                                 Detectors.kick_player(connection)
-                                print("THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
+                                print(
+                                    "THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
                                 return
                             else:
-                                print("THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
+                                print(
+                                    "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
+                                connection.protocol.cached_approved_addresses.append(address)
                         else:
                             print("THProxyDetector: Error for " + service + ": invalid JSON.")
 
         @classmethod
-        def kick_player(self) -> None:
+        def kick_player(self, connection) -> None:
+            if connection.address[0] not in connection.protocol.cached_denied_addresses:
+                connection.protocol.cached_denied_addresses.append(connection.address[0])
+
+            if connection.address[0] in connection.protocol.cached_approved_addresses:
+                connection.protocol.cached_approved_addresses.remove(connection.address[0])
+
             reactor.callLater(0.5, connection.kick, KICK_REASON, KICK_SILENT)
 
-    return protocol, ProxyDetectorConnection
+    return PDProtocol, PDConnection
