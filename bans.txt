@@ -265,8 +265,62 @@
   ],
   [
     "(unknown)",
-    "80.0.121.94",
-    "operator9029",
+    "77.46.224.6",
+    "korean dude",
+    null
+  ],
+  [
+    "Duality",
+    "201.211.221.240",
+    ": hack aimbot",
+    5321283.121945149
+  ],
+  [
+    "bartosz3333",
+    "194.183.55.252",
+    ": Hack Detected - Aimbot    IGN: bartosz3333, #1",
+    5331424.806577623
+  ],
+  [
+    "igotikbots",
+    "186.102.160.211",
+    ": evasion",
+    null
+  ],
+  [
+    "(unknown)",
+    "5.18.101.254",
+    "wrong votekick accuse",
+    5930126.905224544
+  ],
+  [
+    "(unknown)",
+    "93.86.106.76",
+    null,
+    null
+  ],
+  [
+    "alexiss64",
+    "187.190.20.255",
+    ": softaim",
+    null
+  ],
+  [
+    "MACRO_($$$)",
+    "190.114.36.153",
+    ": banned from our servers",
+    null
+  ],
+  [
+    "a",
+    "181.91.244.74",
+    ": Hack Detected - Multiple Bullets  IGN: a #2",
+    null
+  ],
+  [
+    "HOLATENGO9",
+    "187.158.1.62",
+    ": Hack Detected - No Spread    IGN: HOLATENGO9 #20",
     null
   ]
 ]
