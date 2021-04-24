@@ -1,6 +1,6 @@
 """
 THProxyDetector 
-Version: Build 16
+Version: Build 17
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
@@ -33,7 +33,7 @@ VPNAPI_IO_ENABLED = False
 VPNAPI_IO_KEY = "put key here (required)."
 
 # https://ip.teoh.io/vpn-proxy-api --- a free, key-less proxy detection service
-IP_TEOH_IO_ENABLED = True
+IP_TEOH_IO_ENABLED = False
 
 """
 Section 2
@@ -124,7 +124,7 @@ def apply_script(protocol, connection, config):
                         print("THProxyDetector: Service " + service + " is checking " + username + "...")
                     url = str("https://proxycheck.io/v2/" + address + "?key=" + PROXYCHECK_IO_API_KEY)
                     async with session.get(url=url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
-                        response_json = await response.json(content_type='text/plain;charset=utf-8')
+                        response_json = await response.json(content_type=None)
                         if response_json is not None:
                             if response_json[address]["proxy"] == "yes" or response_json[address]["type"] == "VPN":
                                 Detectors.kick_player(connection)
@@ -146,7 +146,7 @@ def apply_script(protocol, connection, config):
                         print("THProxyDetector: Service " + service + " is checking " + username + "...")
                     url = str("https://vpnapi.io/api/" + address + "?key=" + VPNAPI_IO_KEY)
                     async with session.get(url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
-                        response_json = await response.json(content_type='text/plain;charset=utf-8')
+                        response_json = await response.json(content_type=None)
                         if response_json is not None:
                             if response_json["security"]["vpn"] == "True" or response_json["security"]["proxy"] == "True":
                                 Detectors.kick_player(connection)
@@ -168,7 +168,7 @@ def apply_script(protocol, connection, config):
                         print("THProxyDetector: Service " + service + " is checking " + username + "...")
                     url = str("https://ip.teoh.io/api/vpn/" + address)
                     async with session.get(url, allow_redirects=False, timeout=2, headers=HEADERS) as response:
-                        response_json = await response.json(content_type='text/plain;charset=utf-8')
+                        response_json = await response.json(content_type=None)
                         if response_json is not None:
                             if response_json["vpn_or_proxy"] == "yes":
                                 Detectors.kick_player(connection)
