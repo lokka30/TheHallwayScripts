@@ -28,6 +28,6 @@ def apply_script(protocol, connection, config):
             if client.find("OpenSpades") != -1 and client.find("0.0.12b") != -1:
                 reactor.callLater(0.5, self.kick, "OpenSpades 0.0.12b is prohibited on this server.", False)
             
-            return self, name
+            return connection.on_login(self, name)
 
     return protocol, VersionBlockerConnection
