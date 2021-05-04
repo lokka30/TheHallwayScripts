@@ -130,7 +130,7 @@ def apply_script(protocol, connection, config):
                                 Detectors.kick_player(connection)
                                 print(
                                     "THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
-                                return False
+                                return
                             else:
                                 print(
                                     "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
@@ -152,7 +152,7 @@ def apply_script(protocol, connection, config):
                                 Detectors.kick_player(connection)
                                 print(
                                     "THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
-                                return False
+                                return
                             else:
                                 print(
                                     "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
@@ -174,7 +174,7 @@ def apply_script(protocol, connection, config):
                                 Detectors.kick_player(connection)
                                 print(
                                     "THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
-                                return False
+                                return
                             else:
                                 print(
                                     "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
