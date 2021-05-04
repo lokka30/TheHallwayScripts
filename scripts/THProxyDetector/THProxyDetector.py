@@ -1,6 +1,6 @@
 """
 THProxyDetector 
-Version: Build 17
+Version: Build 18
 License: MIT License
 Author: lokka30
 More information: https://github.com/lokka30/TheHallwayScripts
