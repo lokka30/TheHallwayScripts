@@ -82,12 +82,12 @@ def apply_script(protocol, connection, config):
 
             if self.address[0] in self.protocol.cached_approved_addresses:
                 print("THProxyDetector: " + username + " has a cached address (approved)")
-                return
+                return connection.on_login(self, username)
 
             if self.address[0] in self.protocol.cached_denied_addresses:
                 print("THProxyDetector: " + username + " has a cached address (denied)")
                 Detectors.kick_player(self)
-                return
+                return False
 
             if PROXYCHECK_IO_ENABLED:
                 if PRINT_DEBUG_LOGGING:
@@ -130,7 +130,7 @@ def apply_script(protocol, connection, config):
                                 Detectors.kick_player(connection)
                                 print(
                                     "THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
-                                return
+                                return False
                             else:
                                 print(
                                     "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
@@ -152,7 +152,7 @@ def apply_script(protocol, connection, config):
                                 Detectors.kick_player(connection)
                                 print(
                                     "THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
-                                return
+                                return False
                             else:
                                 print(
                                     "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
@@ -174,7 +174,7 @@ def apply_script(protocol, connection, config):
                                 Detectors.kick_player(connection)
                                 print(
                                     "THProxyDetector: Warning for " + service + ": " + username + " was detected for using a VPN or proxy!")
-                                return
+                                return False
                             else:
                                 print(
                                     "THProxyDetector: Info for " + service + ": " + username + " was NOT detected for using a VPN or proxy.")
