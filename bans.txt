@@ -252,75 +252,183 @@
     null
   ],
   [
-    "(unknown)",
-    "181.235.81.153",
-    "Igotikbot known hacker",
-    5494775.021598279
-  ],
-  [
-    "Gehenna",
-    "201.249.21.230",
-    ": multiple bulets",
+    "Roky20",
+    "5.91.180.254",
+    ": wallbang",
     null
   ],
   [
-    "(unknown)",
-    "77.46.224.6",
-    "korean dude",
+    "*':|I.*-^;$#3@",
+    "85.140.0.179",
+    ": esp",
     null
   ],
   [
-    "Duality",
+    "Pp",
+    "187.158.1.62",
+    ": Hack Detected - No Spread    IGN: Pp #4",
+    null
+  ],
+  [
+    "Urfin",
     "201.211.221.240",
-    ": hack aimbot",
-    5321283.121945149
+    ": Hack Detected - Multiple Bullets  IGN: Urfin #10",
+    null
   ],
   [
-    "bartosz3333",
-    "194.183.55.252",
-    ": Hack Detected - Aimbot    IGN: bartosz3333, #1",
-    5331424.806577623
-  ],
-  [
-    "igotikbots",
-    "186.102.160.211",
-    ": evasion",
+    "stupid kid",
+    "23.233.179.8",
+    "",
     null
   ],
   [
     "(unknown)",
-    "5.18.101.254",
-    "wrong votekick accuse",
-    5930126.905224544
+    "191.119.182.168",
+    "angelito kun, I think thats reason enough. Saw him wallhacking on Yet another hallway and banned him there too",
+    null
   ],
   [
     "(unknown)",
-    "93.86.106.76",
+    "5.163.175.140",
+    "az",
+    null
+  ],
+  [
+    "(unknown)",
+    "177.228.41.141",
+    "UwU noclip (Yet another hallway), also banned on Aloha",
+    null
+  ],
+  [
+    "Akinori =",
+    "187.116.113.89",
+    ": Hack Detected - No Spread    IGN: Akinori = #6",
+    null
+  ],
+  [
+    "(unknown)",
+    "109.93.128.30",
     null,
     null
   ],
   [
-    "alexiss64",
-    "187.190.20.255",
-    ": softaim",
+    "(unknown)",
+    "178.223.179.229",
+    null,
     null
   ],
   [
-    "MACRO_($$$)",
-    "190.114.36.153",
-    ": banned from our servers",
+    "(unknown)",
+    "84.17.50.183",
+    null,
     null
   ],
   [
-    "a",
-    "181.91.244.74",
-    ": Hack Detected - Multiple Bullets  IGN: a #2",
+    "RYK I YS",
+    "49.143.38.159",
+    "",
     null
   ],
   [
-    "HOLATENGO9",
-    "187.158.1.62",
-    ": Hack Detected - No Spread    IGN: HOLATENGO9 #20",
+    "A",
+    "190.205.245.253",
+    ": esp",
     null
+  ],
+  [
+    "(unknown)",
+    "213.177.216.120",
+    "esp",
+    null
+  ],
+  [
+    "`-_-`",
+    "178.176.212.211",
+    "hack",
+    null
+  ],
+  [
+    "Hyuiko",
+    "37.167.179.139",
+    "",
+    null
+  ],
+  [
+    "deadi",
+    "90.29.18.247",
+    "",
+    null
+  ],
+  [
+    "rayl rivera",
+    "190.79.150.164",
+    ": hack",
+    null
+  ],
+  [
+    "#niggerpenis",
+    "189.73.204.29",
+    ": name says it all",
+    null
+  ],
+  [
+    "TITAN Nuceto",
+    "152.168.58.45",
+    ": ab",
+    null
+  ],
+  [
+    "(unknown)",
+    "87.123.205.228",
+    "HikoBaba hacker",
+    null
+  ],
+  [
+    "(unknown)",
+    "94.64.40.195",
+    "saying bullshit things and dont explaining them",
+    1033501.913026803
+  ],
+  [
+    "(unknown)",
+    "87.123.205.62",
+    "HikoBaba evading",
+    null
+  ],
+  [
+    "(unknown)",
+    "46.114.144.92",
+    "Siki guy evading",
+    null
+  ],
+  [
+    "Tony montana",
+    "185.136.148.156",
+    ": wallhack",
+    null
+  ],
+  [
+    "TITAN Pp",
+    "187.158.18.76",
+    ": Hack Detected - No Spread    IGN: TITAN Pp #18",
+    null
+  ],
+  [
+    "bartosz3333",
+    "194.183.55.252",
+    ": Hack Detected - Aimbot    IGN: bartosz3333, #15",
+    1002370.381459834
+  ],
+  [
+    "Digitito",
+    "213.177.208.54",
+    ": wallhack",
+    null
+  ],
+  [
+    "davio",
+    "24.136.59.81",
+    ": wall hack",
+    1069845.114662947
   ]
 ]
