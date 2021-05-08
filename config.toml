@@ -1,0 +1,144 @@
+name = "The Hallway | bit.ly/thhwy"
+motd = [
+ "Welcome to TheHallway CTF",
+ "Join our Discord: bit.ly/thhwy",
+ "Cheating and antisocial behaviours are prohibited."
+]
+help = [
+  "Join our Discord for help: bit.ly/thhwy"
+]
+rules = [
+  "Rules are listed on our Discord: bit.ly/thhwy"
+]
+tips = [
+  "Join us on Discord: bit.ly/thhwy",
+  "Cheating and antisocial behaviours are prohibited here.",
+  "Run '/m' to consume a medkit.",
+  "Run '/squad <name>' to join a squad.",
+  "Run '/follow <player>' to follow a player in your squad.",
+  "Run '/emotelist' to list available emotes.",
+  "Have any suggestions? Let us know: bit.ly/thhwy"
+]
+tips_frequency = "4min"
+master = true
+max_players = 32
+server_prefix = "[TH]:"
+max_connections_per_ip = 3
+port = 32887
+network_interface = ""
+ip_getter = "https://services.buildandshoot.com/getip"
+scripts = [
+ # Redacted
+ "teleport", # Used an unreleased version.
+ # Redacted
+ "foglinehitdetector", # Used a customised version.
+ "glow3",
+ "imger",
+ "THCommands",
+ "THKickBadUsernames",
+ "THPlayerList",
+# "ipcheck", # Rakete's fork, only used when THProxyDetector was broken
+ "THProxyDetector",
+# "THVersionBlocker", # Breaks the server, remained disabled for a while
+ "analyze", # Used a custom version
+ "medkit", # Used a custom version
+ "piqueserver.scripts.memcheck",
+ "piqueserver.scripts.nointelonwalls",
+ "piqueserver.scripts.nospadingwalls",
+ "piqueserver.scripts.spadenadefix",
+ "votekick", # Used rakete's PR'd script to piqueserver, that got rejected for some reason
+ "piqueserver.scripts.trusted",
+ "piqueserver.scripts.ratio",
+ "piqueserver.scripts.passreload",
+ "piqueserver.scripts.blockinfo",
+ "piqueserver.scripts.squad",
+ "piqueserver.scripts.afk"
+]
+login_retries = 3
+rotation = [
+  "hallway"
+]
+random_rotation = false
+game_mode = "ctf"
+advance_on_win = true
+respawn_time = "8sec"
+respawn_waves = false
+friendly_fire = false
+friendly_fire_on_grief = true
+grief_friendly_fire_time = "2sec"
+spade_teamkills_on_grief = false
+balanced_teams = 2
+teamswitch_interval = "0sec"
+teamswitch_allowed = true
+speedhack_detect = true
+rubberband_distance = 10
+melee_damage = 80
+fall_damage = true
+user_blocks_only = false
+set_god_build = false
+time_announcements = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 60, 120, 180, 240, 300, 600, 900, 1200, 1800, 2400, 3000]
+cap_limit = 10
+everyone_is_admin = false
+
+[team1]
+name = "Red"
+color = [ 255, 40, 40]
+
+[team2]
+name = "Blue"
+color = [ 40, 100, 255]
+
+[passwords]
+admin = [] # Redacted
+moderator = [] # Redacted
+guard = [] # Redacted
+observer = [] # Redacted.
+trusted = [] # Redacted.
+
+
+[bans]
+default_duration = "1month"
+file = "bans.txt"
+publish = false
+
+[rights]
+moderator = [] # Redacted, contains confidential commands.
+guard = [] # Redacted, contains confidential commands.
+observer = [] # Redacted, contains confidential commands.
+
+[logging]
+loglevel = "info"
+logfile = "./logs/log.txt"
+rotate_daily = true
+profile = false
+
+[status_server]
+enabled = false
+
+[irc]
+enabled = false
+nickname = "piqueserver"
+username = "piqueserver"
+realname = "piqueserver"
+server = "irc.quakenet.org"
+port = 6667
+channel = "#MyServerChannel"
+password = ""
+commandprefix = "!"
+chatprefix = "."
+
+[ssh]
+enabled = false
+
+[squad]
+respawn_time = "12sec"
+size = 4
+auto_squad = false
+
+[afk]
+time_limit = "30min"
+
+[votekick]
+percentage = 50
+ban_duration = "30min"
+public_votes = true
