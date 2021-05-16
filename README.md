@@ -1,5 +1,7 @@
-# IMPORTANT:
-No longer maintained, The Hallway has been shut down. Please feel free to use any of the scripts under the MIT license. :)
+# NOTICE:
+I no longer run The Hallway or maintain this repository. Please fork this repo if you wish to work on the scripts.
+
+***
 
 # Old README:
 Psst: looking for the scripts currently in development? The ones in the main branch are older releases, please see the corresponding branch for the script you are interested in.
